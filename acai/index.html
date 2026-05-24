@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Açaí Roxo Demo - CardápioZap</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#cardapio" aria-label="Açaí Roxo início">
+        <span class="brand-mark">AÇ</span>
+        <span>
+          <strong>Açaí Roxo</strong>
+          <small>copos, bowls e adicionais</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <a href="#cardapio">Cardápio</a>
+        <a href="#pedido">Pedido</a>
+        <a href="../oferta/">CardápioZap</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <p class="eyebrow">delivery de açaí natural e refrescante</p>
+          <h1>Açaí pronto, promocional ou montado do seu jeito.</h1>
+          <p>Uma demo inspirada em lojas reais de açaí, com pedido mínimo, entrega, retirada e complementos no carrinho.</p>
+          <a class="primary-action" href="#cardapio">Montar açaí</a>
+        </div>
+      </section>
+
+      <section class="status-strip">
+        <span>Pedido mínimo R$ 10,00</span>
+        <span>30-50 min - entrega grátis</span>
+        <span>Aberto hoje</span>
+        <span>Pix, cartão e dinheiro</span>
+      </section>
+
+      <section class="service-grid" aria-label="Informações de atendimento">
+        <article>
+          <strong>Entrega rápida</strong>
+          <span>Pedido acompanhado pelo WhatsApp</span>
+        </article>
+        <article>
+          <strong>Retirada</strong>
+          <span>Peça online e retire sem fila</span>
+        </article>
+        <article>
+          <strong>Primeiro pedido</strong>
+          <span>Promoções para atrair novos clientes</span>
+        </article>
+        <article>
+          <strong>Complementos</strong>
+          <span>Escolha frutas, cremes e adicionais</span>
+        </article>
+      </section>
+
+      <section class="layout" id="cardapio">
+        <div>
+          <div class="section-heading">
+            <p class="eyebrow">mais pedidos</p>
+            <h2>Cardápio de açaí</h2>
+          </div>
+
+          <div class="filters" aria-label="Filtros do cardápio">
+            <button class="filter active" type="button" data-filter="todos">Todos</button>
+            <button class="filter" type="button" data-filter="primeiro">Primeiro Pedido</button>
+            <button class="filter" type="button" data-filter="promocionais">Promocionais</button>
+            <button class="filter" type="button" data-filter="montado">Açaí Montado</button>
+            <button class="filter" type="button" data-filter="monte">Monte seu Açaí</button>
+            <button class="filter" type="button" data-filter="bebidas">Bebidas</button>
+          </div>
+
+          <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        </div>
+
+        <aside class="order-panel" id="pedido" aria-label="Resumo do pedido">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">pedido do açaí</p>
+              <h2>Carrinho</h2>
+              <p class="order-number" id="nextOrderNumber">Próximo pedido #0001</p>
+            </div>
+            <button class="ghost-button" id="clearCart" type="button">Limpar</button>
+          </div>
+
+          <div class="cart-list" id="cartList">
+            <p class="empty-cart">Escolha um item para começar.</p>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Dados do cliente</p>
+            <label class="field">
+              <span>Nome completo *</span>
+              <input id="customerName" type="text" placeholder="Nome do cliente" autocomplete="name" required />
+            </label>
+            <label class="field">
+              <span>CPF *</span>
+              <input id="customerCpf" type="text" placeholder="000.000.000-00" inputmode="numeric" autocomplete="off" required />
+            </label>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Entrega ou retirada</p>
+            <label class="field">
+              <span>Forma de entrega *</span>
+              <select id="deliveryMode">
+                <option value="entrega">Entrega</option>
+                <option value="retirada">Retirada</option>
+              </select>
+            </label>
+
+            <div class="address-group" id="addressGroup">
+              <p class="field-title">Endereço de entrega *</p>
+              <label class="field">
+                <span>Rua *</span>
+                <input id="street" type="text" placeholder="Nome da rua" required />
+              </label>
+              <div class="field-row">
+                <label class="field">
+                  <span>Número *</span>
+                  <input id="addressNumber" type="text" placeholder="123" inputmode="numeric" required />
+                </label>
+                <label class="field">
+                  <span>Complemento *</span>
+                  <input id="addressComplement" type="text" placeholder="Casa, apto, bloco..." required />
+                </label>
+              </div>
+              <label class="field">
+                <span>Bairro *</span>
+                <input id="district" type="text" placeholder="Bairro" required />
+              </label>
+              <label class="field">
+                <span>Ponto de referência *</span>
+                <input id="referencePoint" type="text" placeholder="Ex: portão azul, perto da farmácia..." required />
+              </label>
+            </div>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Pagamento</p>
+            <label class="field">
+              <span>Forma de pagamento *</span>
+              <select id="paymentMethod" required>
+                <option value="">Selecione</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Cartão na entrega">Cartão na entrega</option>
+              </select>
+            </label>
+            <label class="field hidden" id="changeGroup">
+              <span>Troco para quanto? *</span>
+              <input id="changeFor" type="text" placeholder="Ex: R$ 50,00" inputmode="decimal" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Observações gerais</span>
+            <textarea id="notes" rows="3" placeholder="Ex: mandar colher, entregar na portaria..."></textarea>
+          </label>
+
+          <dl class="totals">
+            <div>
+              <dt>Subtotal</dt>
+              <dd id="subtotal">R$ 0,00</dd>
+            </div>
+            <div>
+              <dt>Entrega</dt>
+              <dd id="deliveryFee">R$ 0,00</dd>
+            </div>
+            <div class="grand-total">
+              <dt>Total</dt>
+              <dd id="grandTotal">R$ 0,00</dd>
+            </div>
+          </dl>
+
+          <button class="checkout" id="checkout" type="button">Finalizar pedido</button>
+          <p class="order-message" id="orderMessage" role="status"></p>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js?v=2"></script>
+  </body>
+</html>

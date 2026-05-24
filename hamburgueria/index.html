@@ -1,0 +1,236 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Burguer - Cardapio e pedidos</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="#cardapio" aria-label="Burguer inicio">
+        <span class="brand-mark">B</span>
+        <span>
+          <strong>Burguer</strong>
+          <small>hamburgueria artesanal</small>
+        </span>
+      </a>
+
+      <nav class="nav" aria-label="Principal">
+        <a href="#cardapio">Cardapio</a>
+        <a href="#combos">Combos</a>
+        <a href="#informacoes">Info</a>
+        <a href="#pedido">Pedido</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero" aria-label="Destaque">
+        <div class="hero-copy">
+          <p class="eyebrow">aberto hoje das 18h as 23h</p>
+          <h1>Burguer artesanal feito para pedir sem enrolacao.</h1>
+          <p class="hero-text">
+            Monte seu pedido, escolha os favoritos da casa e acompanhe o total em tempo real.
+          </p>
+          <a class="primary-action" href="#cardapio">Ver cardapio</a>
+        </div>
+      </section>
+
+      <section class="status-strip" aria-label="Informacoes rapidas">
+        <span>Entrega media: 35 min</span>
+        <span>Retirada no balcao</span>
+        <span>Taxa fixa: R$ 6,00</span>
+      </section>
+
+      <section class="layout" id="cardapio">
+        <div>
+          <div class="section-heading">
+            <p class="eyebrow">mais pedidos</p>
+            <h2>Cardapio</h2>
+          </div>
+
+          <div class="filters" aria-label="Filtros do cardapio">
+            <button class="filter active" type="button" data-filter="todos">Todos</button>
+            <button class="filter" type="button" data-filter="burgers">Burgers</button>
+            <button class="filter" type="button" data-filter="combos">Combos</button>
+            <button class="filter" type="button" data-filter="bebidas">Bebidas</button>
+          </div>
+
+          <div class="menu-grid" id="menuGrid" aria-live="polite"></div>
+        </div>
+
+        <aside class="order-panel" id="pedido" aria-label="Resumo do pedido">
+          <div class="panel-header">
+            <div>
+              <p class="eyebrow">seu pedido</p>
+              <h2>Carrinho</h2>
+              <p class="order-number" id="nextOrderNumber">Proximo pedido #0001</p>
+            </div>
+            <button class="ghost-button" id="clearCart" type="button">Limpar</button>
+          </div>
+
+          <div class="cart-list" id="cartList">
+            <p class="empty-cart">Escolha um item do cardapio para comecar.</p>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Dados do cliente</p>
+
+          <label class="field">
+            <span>Nome completo *</span>
+            <input id="customerName" type="text" placeholder="Nome do cliente" autocomplete="name" required />
+          </label>
+
+          <label class="field">
+            <span>CPF *</span>
+            <input id="customerCpf" type="text" placeholder="000.000.000-00" inputmode="numeric" autocomplete="off" required />
+          </label>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Entrega ou retirada</p>
+
+          <label class="field">
+            <span>Forma de entrega *</span>
+            <select id="deliveryMode">
+              <option value="entrega">Entrega</option>
+              <option value="retirada">Retirada</option>
+            </select>
+          </label>
+
+          <div class="address-group" id="addressGroup" aria-label="Endereco de entrega">
+            <p class="field-title">Endereco de entrega *</p>
+            <label class="field">
+              <span>Rua *</span>
+              <input id="street" type="text" placeholder="Nome da rua" autocomplete="street-address" required />
+            </label>
+
+            <div class="field-row">
+              <label class="field">
+                <span>Numero *</span>
+                <input id="addressNumber" type="text" placeholder="123" inputmode="numeric" required />
+              </label>
+
+              <label class="field">
+                <span>Complemento *</span>
+                <input id="addressComplement" type="text" placeholder="Casa, apto, bloco..." required />
+              </label>
+            </div>
+
+            <label class="field">
+              <span>Bairro *</span>
+              <input id="district" type="text" placeholder="Bairro" autocomplete="address-level2" required />
+            </label>
+
+            <label class="field">
+              <span>Ponto de referencia *</span>
+              <input id="referencePoint" type="text" placeholder="Ex: perto do mercado, portao azul..." required />
+            </label>
+          </div>
+          </div>
+
+          <div class="checkout-section">
+            <p class="checkout-title">Pagamento</p>
+
+            <label class="field">
+              <span>Forma de pagamento *</span>
+              <select id="paymentMethod" required>
+                <option value="">Selecione</option>
+                <option value="Pix">Pix</option>
+                <option value="Dinheiro">Dinheiro</option>
+                <option value="Cartao na entrega">Cartao na entrega</option>
+              </select>
+            </label>
+
+            <label class="field hidden" id="changeGroup">
+              <span>Troco para quanto? *</span>
+              <input id="changeFor" type="text" placeholder="Ex: R$ 100,00" inputmode="decimal" />
+            </label>
+          </div>
+
+          <label class="field">
+            <span>Observacoes gerais</span>
+            <textarea id="notes" rows="3" placeholder="Ex: tocar campainha, ligar ao chegar..."></textarea>
+          </label>
+
+          <dl class="totals">
+            <div>
+              <dt>Subtotal</dt>
+              <dd id="subtotal">R$ 0,00</dd>
+            </div>
+            <div>
+              <dt>Entrega</dt>
+              <dd id="deliveryFee">R$ 6,00</dd>
+            </div>
+            <div class="grand-total">
+              <dt>Total</dt>
+              <dd id="grandTotal">R$ 6,00</dd>
+            </div>
+          </dl>
+
+          <button class="checkout" id="checkout" type="button">Finalizar pedido</button>
+          <p class="order-message" id="orderMessage" role="status"></p>
+        </aside>
+      </section>
+
+      <section class="combos-band" id="combos">
+        <div>
+          <p class="eyebrow">combo da semana</p>
+          <h2>Smash duplo, batata rustica e refri por R$ 42,90.</h2>
+        </div>
+        <button class="secondary-action" type="button" data-add-featured>Adicionar combo</button>
+      </section>
+
+      <section class="info-section" id="informacoes" aria-label="Endereco, horario e contato">
+        <div class="section-heading">
+          <p class="eyebrow">informacoes</p>
+          <h2>Endereco, horario e atendimento</h2>
+        </div>
+
+        <div class="info-grid">
+          <article class="info-card">
+            <span class="info-icon">📍</span>
+            <h3>Endereco</h3>
+            <p>Rua Principal, 123 - Centro</p>
+            <small>Troque pelo endereco real da hamburgueria.</small>
+          </article>
+
+          <article class="info-card">
+            <span class="info-icon">⏰</span>
+            <h3>Horario</h3>
+            <p>Todos os dias, das 18h as 23h</p>
+            <small>Pedidos aceitos dentro do horario de funcionamento.</small>
+          </article>
+
+          <article class="info-card">
+            <span class="info-icon">🛵</span>
+            <h3>Entrega</h3>
+            <p>Entrega media de 35 minutos</p>
+            <small>Taxa fixa de R$ 6,00 para pedidos de entrega.</small>
+          </article>
+
+          <article class="info-card">
+            <span class="info-icon">🥡</span>
+            <h3>Retirada</h3>
+            <p>Retire no balcao sem taxa</p>
+            <small>Escolha "Retirada" no carrinho antes de finalizar.</small>
+          </article>
+        </div>
+
+        <div class="contact-band">
+          <div>
+            <p class="eyebrow">contato</p>
+            <h2>Fale com a hamburgueria pelo WhatsApp</h2>
+            <p>Use o pedido automatico do carrinho ou chame direto para tirar duvidas.</p>
+          </div>
+          <a class="secondary-action" href="https://wa.me/5548996495663" target="_blank" rel="noopener">
+            Chamar WhatsApp
+          </a>
+        </div>
+      </section>
+    </main>
+
+    <script src="app.js?v=6"></script>
+  </body>
+</html>
