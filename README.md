@@ -1,13 +1,15 @@
-# Burguer
+# SiteProLocal
 
-Primeira versao de um site/cardapio para hamburgueria com:
+Site de venda e demonstracoes para oferecer paginas profissionais a pequenos comercios locais.
 
-- cardapio filtravel;
-- carrinho com quantidade;
-- taxa de entrega por modo de pedido;
-- resumo de pedido com nome e observacoes.
+O projeto inclui:
 
-Abra `index.html` no navegador para testar.
+- pagina principal de oferta para pequenos negocios;
+- mensagem de WhatsApp pronta para continuar o atendimento;
+- demonstracao para restaurante simples/PF;
+- demonstracao para hamburgueria;
+- demonstracao para pizzaria;
+- demonstracao para acai.
 
 ## Rodar no VS Code
 
@@ -23,10 +25,30 @@ Depois acesse:
 http://127.0.0.1:5177
 ```
 
-Site de oferta do servico:
+## Paginas
+
+Pagina principal:
+
+```text
+http://127.0.0.1:5177/
+```
+
+Pagina de oferta:
 
 ```text
 http://127.0.0.1:5177/oferta/
+```
+
+Demo de restaurante:
+
+```text
+http://127.0.0.1:5177/restaurante/
+```
+
+Demo de hamburgueria:
+
+```text
+http://127.0.0.1:5177/hamburgueria/
 ```
 
 Demo de pizzaria:
@@ -35,14 +57,14 @@ Demo de pizzaria:
 http://127.0.0.1:5177/pizzaria/
 ```
 
-Demo de açaí:
+Demo de acai:
 
 ```text
 http://127.0.0.1:5177/acai/
 ```
 
-Demo de restaurante:
+## Dominio
 
-```text
-http://127.0.0.1:5177/restaurante/
-```
+Marca atual: SiteProLocal.
+
+Depois de publicar no GitHub Pages, configure o dominio comprado apontando para o site publicado.
