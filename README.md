@@ -7,6 +7,7 @@ O projeto inclui:
 - pagina principal de oferta para pequenos negocios;
 - mensagem de WhatsApp pronta para continuar o atendimento;
 - demonstracao para restaurante simples/PF;
+- destaque de cliente para barbearia;
 - demonstracao para hamburgueria;
 - demonstracao para pizzaria;
 - demonstracao para acai.
@@ -43,6 +44,12 @@ Demo de restaurante:
 
 ```text
 http://127.0.0.1:5177/restaurante/
+```
+
+Destaque de barbearia:
+
+```text
+http://127.0.0.1:5177/barbearia/
 ```
 
 Demo de hamburgueria:
