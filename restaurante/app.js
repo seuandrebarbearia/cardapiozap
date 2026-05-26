@@ -38,6 +38,8 @@ const changeFor = $("#changeFor");
 const notes = $("#notes");
 const checkout = $("#checkout");
 const nextOrderNumber = $("#nextOrderNumber");
+const orderPanel = $("#pedido");
+const continueOrder = $("#continueOrder");
 
 function formatCpf(value) {
   return value.replace(/\D/g, "").slice(0, 11).replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d)/, "$1.$2").replace(/(\d{3})(\d{1,2})$/, "$1-$2");
@@ -48,6 +50,12 @@ function getNextOrderNumber() {
 }
 function formatOrderNumber(number) { return `#${String(number).padStart(4, "0")}`; }
 function updateNextOrderNumber() { nextOrderNumber.textContent = `Próximo pedido ${formatOrderNumber(getNextOrderNumber())}`; }
+function focusOrderPanel() {
+  orderPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  orderPanel.classList.add("order-focus");
+  window.setTimeout(() => orderPanel.classList.remove("order-focus"), 1600);
+}
+function returnToMenu() { $("#cardapio").scrollIntoView({ behavior: "smooth", block: "start" }); }
 function reserveOrderNumber() {
   const orderNumber = getNextOrderNumber();
   localStorage.setItem(orderCounterKey, String(orderNumber + 1));
@@ -102,6 +110,7 @@ function addItem(id) {
   state.nextCartId += 1;
   orderMessage.textContent = "";
   renderCart();
+  focusOrderPanel();
 }
 function toggleListValue(list, value, checked) {
   if (checked) return list.includes(value) ? list : [...list, value];
@@ -169,6 +178,7 @@ cartList.addEventListener("input", (event) => {
   cartItem.note = note.value;
 });
 $("#clearCart").addEventListener("click", () => { state.cart = []; orderMessage.textContent = ""; renderCart(); });
+continueOrder.addEventListener("click", returnToMenu);
 $("[data-add-featured]").addEventListener("click", () => { addItem("pf-bife"); $("#pedido").scrollIntoView({ behavior: "smooth", block: "start" }); });
 deliveryMode.addEventListener("change", updateDeliveryMode);
 paymentMethod.addEventListener("change", updatePaymentMode);

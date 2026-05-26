@@ -108,6 +108,8 @@ const changeFor = document.querySelector("#changeFor");
 const notes = document.querySelector("#notes");
 const checkout = document.querySelector("#checkout");
 const nextOrderNumber = document.querySelector("#nextOrderNumber");
+const orderPanel = document.querySelector("#pedido");
+const continueOrder = document.querySelector("#continueOrder");
 
 function formatCpf(value) {
   return value
@@ -129,6 +131,16 @@ function formatOrderNumber(number) {
 
 function updateNextOrderNumber() {
   nextOrderNumber.textContent = `Proximo pedido ${formatOrderNumber(getNextOrderNumber())}`;
+}
+
+function focusOrderPanel() {
+  orderPanel.scrollIntoView({ behavior: "smooth", block: "start" });
+  orderPanel.classList.add("order-focus");
+  window.setTimeout(() => orderPanel.classList.remove("order-focus"), 1600);
+}
+
+function returnToMenu() {
+  document.querySelector("#cardapio").scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function reserveOrderNumber() {
@@ -263,6 +275,7 @@ function addItem(id) {
   state.nextCartId += 1;
   orderMessage.textContent = "";
   renderCart();
+  focusOrderPanel();
 }
 
 function updateCartItem(cartId, updates) {
@@ -388,6 +401,8 @@ document.querySelector("#clearCart").addEventListener("click", () => {
   orderMessage.textContent = "";
   renderCart();
 });
+
+continueOrder.addEventListener("click", returnToMenu);
 
 deliveryMode.addEventListener("change", updateDeliveryMode);
 paymentMethod.addEventListener("change", updatePaymentMode);

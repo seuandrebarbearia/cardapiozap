@@ -58,6 +58,9 @@ h2 { font-size: clamp(1.65rem,3vw,2.45rem); line-height: 1.08; margin-bottom: 0;
 .order-number, .empty-cart { color: var(--muted); }
 .order-number { font-size: .9rem; font-weight: 800; margin: 8px 0 0; }
 .ghost-button { min-height: 38px; padding: 0 12px; }
+.continue-order { background: var(--ink); border: 0; border-radius: 8px; color: #fff; font-weight: 900; min-height: 44px; padding: 0 16px; width: 100%; }
+.order-panel.order-focus { animation: orderPulse 1.6s ease; border-color: var(--accent); }
+@keyframes orderPulse { 0% { box-shadow: 0 0 0 0 rgba(184,51,37,.32), var(--shadow); } 100% { box-shadow: 0 0 0 18px rgba(184,51,37,0), var(--shadow); } }
 .cart-list { display: grid; gap: 12px; }
 .cart-row { border-bottom: 1px solid var(--line); display: grid; gap: 10px; padding-bottom: 12px; }
 .cart-row-top, .qty-controls, .totals div { align-items: center; display: flex; }
