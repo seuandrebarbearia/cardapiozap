@@ -122,6 +122,13 @@ img {
   background: rgba(255, 250, 242, 0.86);
 }
 
+.map-link {
+  background: var(--gold);
+  border-color: var(--gold);
+  color: var(--dark);
+  box-shadow: 0 14px 30px rgba(199, 150, 75, 0.26);
+}
+
 .hero {
   position: relative;
   min-height: calc(100vh - 74px);
