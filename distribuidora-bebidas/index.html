@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Distribuidora Express | Cardápio Digital</title>
+    <link rel="preconnect" href="https://images.unsplash.com" />
+    <link rel="stylesheet" href="styles.css?v=3" />
+  </head>
+  <body>
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">Distribuidora de bebidas • entrega rápida</p>
+        <h1>Distribuidora Express</h1>
+      </div>
+      <nav class="nav-actions" aria-label="Atalhos do cardápio">
+        <a class="nav-link" href="#menu">Cardápio</a>
+        <a class="whatsapp-link" href="#checkout">Pedir no WhatsApp</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <span class="status-pill">Aberto hoje • retirada ou entrega</span>
+          <h2>Bebidas geladas, carvão, gelo e tabacaria em um pedido só.</h2>
+          <p>O cliente escolhe os produtos, informa endereço, pagamento e o pedido chega pronto no WhatsApp da distribuidora.</p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#menu">Ver cardápio</a>
+            <a class="secondary-button" href="#checkout">Finalizar pedido</a>
+          </div>
+        </div>
+        <div class="hero-visual" aria-label="Bebidas geladas prontas para entrega"></div>
+      </section>
+
+      <section class="proof-strip" aria-label="Recursos do cardápio">
+        <div><strong>Pedido #</strong><span>numeração automática</span></div>
+        <div><strong>CPF e endereço</strong><span>dados completos</span></div>
+        <div><strong>Pix, cartão ou dinheiro</strong><span>com campo de troco</span></div>
+        <div><strong>+18</strong><span>aviso obrigatório</span></div>
+      </section>
+
+      <section class="layout" id="menu">
+        <div class="menu-area">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Cardápio digital demo</p>
+              <h2>Escolha os produtos</h2>
+            </div>
+            <div class="search-box">
+              <input id="searchInput" type="search" placeholder="Buscar produto" />
+            </div>
+          </div>
+
+          <div class="category-tabs" id="categoryTabs"></div>
+          <div class="product-grid" id="productGrid"></div>
+        </div>
+
+        <aside class="checkout-panel" id="checkout">
+          <div class="checkout-header">
+            <div>
+              <p class="eyebrow">Seu pedido</p>
+              <h2 id="orderNumber">Pedido #000</h2>
+            </div>
+            <button class="clear-button" id="clearCart" type="button">Limpar</button>
+          </div>
+          <a class="back-menu-button" href="#menu">Voltar ao cardápio</a>
+
+          <div class="cart-items" id="cartItems">
+            <p class="empty-cart">Adicione produtos para montar o pedido.</p>
+          </div>
+
+          <form id="orderForm" class="order-form">
+            <label>
+              Nome do cliente
+              <input name="customerName" type="text" placeholder="Ex: João Silva" required />
+            </label>
+            <label>
+              CPF
+              <input name="cpf" type="text" placeholder="000.000.000-00" required />
+            </label>
+
+            <div class="field-group">
+              <span>Recebimento</span>
+              <div class="segmented">
+                <label><input type="radio" name="fulfillment" value="delivery" checked /> Entrega</label>
+                <label><input type="radio" name="fulfillment" value="pickup" /> Retirada</label>
+              </div>
+            </div>
+
+            <div class="address-fields" id="addressFields">
+              <label>
+                Rua
+                <input name="street" type="text" placeholder="Nome da rua" required />
+              </label>
+              <div class="two-columns">
+                <label>
+                  Número
+                  <input name="number" type="text" placeholder="123" required />
+                </label>
+                <label>
+                  Bairro
+                  <input name="district" type="text" placeholder="Centro" required />
+                </label>
+              </div>
+              <label>
+                Complemento
+                <input name="complement" type="text" placeholder="Apto, bloco, casa" />
+              </label>
+              <label>
+                Ponto de referência
+                <input name="reference" type="text" placeholder="Próximo de..." required />
+              </label>
+            </div>
+
+            <label>
+              Pagamento
+              <select name="payment" id="paymentMethod" required>
+                <option value="Pix">Pix</option>
+                <option value="Cartão na entrega">Cartão na entrega</option>
+                <option value="Dinheiro">Dinheiro</option>
+              </select>
+            </label>
+
+            <label class="change-field hidden" id="changeField">
+              Troco para quanto?
+              <input name="changeFor" type="text" placeholder="Ex: R$ 100,00" />
+            </label>
+
+            <label>
+              Observações gerais
+              <textarea name="notes" rows="3" placeholder="Ex: entregar gelado, interfone, sem sacola..."></textarea>
+            </label>
+
+            <div class="totals">
+              <div><span>Subtotal</span><strong id="subtotal">R$ 0,00</strong></div>
+              <div><span>Entrega</span><strong id="deliveryFee">R$ 7,00</strong></div>
+              <div class="grand-total"><span>Total</span><strong id="total">R$ 0,00</strong></div>
+            </div>
+
+            <p class="legal-note">Venda de bebidas alcoólicas, tabaco e cigarros proibida para menores de 18 anos. A entrega pode exigir documento.</p>
+            <button class="primary-button full" type="submit">Enviar pedido no WhatsApp</button>
+          </form>
+        </aside>
+      </section>
+    </main>
+
+    <script src="app.js?v=3"></script>
+  </body>
+</html>
