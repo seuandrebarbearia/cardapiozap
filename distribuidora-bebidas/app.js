@@ -411,7 +411,8 @@ function focusCartItem(productId) {
 }
 
 function smoothScrollToElement(element) {
-  const headerOffset = 104;
+  const header = document.querySelector(".topbar");
+  const headerOffset = header ? header.getBoundingClientRect().height + 18 : 104;
   const top = element.getBoundingClientRect().top + window.scrollY - headerOffset;
   window.scrollTo({ top, behavior: "smooth" });
 }
