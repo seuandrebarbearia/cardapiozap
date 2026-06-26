@@ -1,45 +1,43 @@
-const http = require("node:http");
-const fs = require("node:fs/promises");
-const path = require("node:path");
+const http = require("http");
+const fs = require("fs");
+const path = require("path");
 
-const rootDir = __dirname;
+const root = __dirname;
 const port = 5177;
-
-const mimeTypes = {
+const contentTypes = {
   ".html": "text/html; charset=utf-8",
   ".css": "text/css; charset=utf-8",
   ".js": "text/javascript; charset=utf-8",
-  ".md": "text/markdown; charset=utf-8",
+  ".jpg": "image/jpeg",
+  ".png": "image/png"
 };
 
-const server = http.createServer(async (request, response) => {
-  try {
-    const url = new URL(request.url, `http://127.0.0.1:${port}`);
-    const pathname = decodeURIComponent(url.pathname === "/" ? "/index.html" : url.pathname);
-    let filePath = path.normalize(path.join(rootDir, pathname));
+http.createServer((request, response) => {
+  const requestPath = decodeURIComponent(request.url.split("?")[0]);
+  const relativePath = requestPath === "/" ? "index.html" : requestPath.replace(/^\/+/, "");
+  const filePath = path.resolve(root, relativePath);
 
-    if (!filePath.startsWith(rootDir)) {
-      response.writeHead(403);
-      response.end("Forbidden");
+  if (!filePath.startsWith(root)) {
+    response.writeHead(403);
+    response.end("Forbidden");
+    return;
+  }
+
+  fs.readFile(filePath, (error, content) => {
+    if (error) {
+      response.writeHead(404);
+      response.end("Not found");
       return;
     }
 
-    const stats = await fs.stat(filePath);
-    if (stats.isDirectory()) {
-      filePath = path.join(filePath, "index.html");
-    }
-
-    const file = await fs.readFile(filePath);
     response.writeHead(200, {
-      "content-type": mimeTypes[path.extname(filePath)] || "application/octet-stream",
+      "Content-Type": contentTypes[path.extname(filePath)] || "application/octet-stream",
+      "Cache-Control": "no-store, no-cache, must-revalidate",
+      "Pragma": "no-cache",
+      "Expires": "0"
     });
-    response.end(file);
-  } catch {
-    response.writeHead(404);
-    response.end("Not found");
-  }
-});
-
-server.listen(port, "127.0.0.1", () => {
-  console.log(`Burguer rodando em http://127.0.0.1:${port}`);
+    response.end(content);
+  });
+}).listen(port, "127.0.0.1", () => {
+  console.log(`Demo disponível em http://127.0.0.1:${port}`);
 });
