@@ -1,4 +1,4 @@
-const WHATSAPP_NUMBER = "5548999999999";
+const WHATSAPP_NUMBER = "5548996495663";
 
 const leadForm = document.querySelector("#leadForm");
 const formError = document.querySelector("#formError");
